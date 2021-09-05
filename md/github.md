@@ -52,7 +52,7 @@
 ### branch
 
 - git branch
-  - 查看当前branch
+- 查看当前branchP
 - git branch -r
   - 查看github上的branch
 - git branch -a
