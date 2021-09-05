@@ -9,7 +9,7 @@
 
 ## git commands
 
-![git-commands](./Assets/git-commands.png)
+![git-commands](https://raw.githubusercontent.com/CC2m2/learning-js-mdn/main/md/Assets/git-commands.png)
 
 ### basic
 
