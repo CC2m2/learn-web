@@ -39,6 +39,8 @@
 <!-- /TOC -->
 ## What is javascript
 
+[myPen-Number guessing game](https://codepen.io/cc2m2/pen/MWoYBWY)
+
 ### Script loading strategies
 
  If you are using JavaScript to manipulate elements on the page (or more accurately, the Document Object Model), your code won't work if the JavaScript is loaded and parsed before the HTML you are trying to do something to.

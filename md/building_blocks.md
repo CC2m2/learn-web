@@ -45,5 +45,7 @@ You will mainly use anonymous functions to just run a load of code in response t
 
 ## Build your own function
 
+[myPen-Build your own function](https://codepen.io/cc2m2/pen/bGRePVB)
+
 The parentheses in this context are sometimes called the "_function invocation operator_". You only use them when you want to run the function immediately in the current scope. In the same respect, the code inside the anonymous function is not run immediately, as it is inside the function scope. [Calling the function](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Build_your_own_function)
 If we want to specify parameters inside parentheses for the function we are calling, then we can't call it directly — we need to put it inside **an anonymous function** so that it isn't in the immediate scope and therefore isn't called immediately. Now it will not be called until the button is clicked.
