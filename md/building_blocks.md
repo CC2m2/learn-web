@@ -1,8 +1,8 @@
-# Building blocks
+# [Building blocks](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks)
 
 <!-- TOC -->
 
-- [Building blocks](#building-blocks)
+- [[Building blocks](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks)](#building-blockshttpsdevelopermozillaorgen-usdocslearnjavascriptbuilding_blocks)
   - [Functions — reusable blocks of code](#functions--reusable-blocks-of-code)
     - [Anonymous functions](#anonymous-functions)
   - [Build your own function](#build-your-own-function)

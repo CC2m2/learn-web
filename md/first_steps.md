@@ -1,7 +1,7 @@
-# First steps
+# [First steps](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps)
 <!-- TOC -->
 
-- [First steps](#first-steps)
+- [[First steps](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps)](#first-stepshttpsdevelopermozillaorgen-usdocslearnjavascriptfirst_steps)
   - [What is javascript](#what-is-javascript)
     - [Script loading strategies](#script-loading-strategies)
       - [Internal script](#internal-script)
@@ -17,15 +17,15 @@
       - [Number()](#number)
     - [Arithmetic operators](#arithmetic-operators)
       - [/](#)
-      - [**](#-1)
+      - [**](#)
     - [Comparison operators](#comparison-operators)
       - [== / != and === / !===](#---and---)
         - [== / !=](#--)
-        - [=== / !==](#---1)
+        - [=== / !==](#--)
   - [Handling text — strings in JavaScript](#handling-text--strings-in-javascript)
     - [Escaping characters in a string](#escaping-characters-in-a-string)
     - [Numbers vs. strings](#numbers-vs-strings)
-    - [Template literals](#template-literals)
+    - [[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)](#template-literalshttpsdevelopermozillaorgen-usdocswebjavascriptreferencetemplate_literals)
       - [Multi-line strings](#multi-line-strings)
       - [Expression interpolation](#expression-interpolation)
       - [Nesting templates](#nesting-templates)
