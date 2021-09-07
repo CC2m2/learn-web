@@ -146,3 +146,93 @@ let person1 = new Object({
 JavaScript has a built-in method called `create()` that allows you to _create object instances without first creating constructors_, especially if they are creating only a few instances of an object. 
 
 With it, _you can create a new object, using an existing object as the prototype of the newly created object._
+
+## Object prototypes
+
+### A prototype-based language?
+
+**Prototypes** are the mechanism by which _JavaScript objects inherit features from one another_.
+
+**prototype chain** : An object's prototype object may also have a prototype object, which it inherits methods and properties from, and so on. This is often referred to as a prototype chain, and explains why different objects have properties and methods defined on other objects available to them.
+
+### Understanding prototype objects
+
+_valueOf()_ returns the value of the object it is called on.
+
+the methods and properties _are not copied_ from one object to another in the **prototype chain**. They _are accessed by walking up the chain_ as described above.
+
+The prototype chain is _traversed only while retrieving properties_. If properties are set or deleted directly on the object, the prototype chain is not traversed.
+
+Since ECMAScript 2015, you can access an object's prototype object indirectly via `Object.getPrototypeOf(obj)`. 相当于`obj.__proto__``obj.[[Prototype]]`
+
+#### [__proto__  prototype constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
+
+![prototype-chain](./Assets/prototype-chain.png)
+
+- __proto__和constructor属性是对象所独有的；
+- prototype属性是函数所独有的，因为函数也是一种对象，所以函数也拥有__proto__和constructor属性。
+- __proto__属性的作用就是当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的__proto__属性所指向的那个对象（父对象）里找，一直找，直到__proto__属性的终点null，再往上找就相当于在null上取值，会报错。通过__proto__属性将对象连接起来的这条链路即我们所谓的原型链。
+- prototype属性的作用就是让该函数所实例化的对象们都可以找到公用的属性和方法，即f1.__proto__ === Foo.prototype
+- constructor属性的含义就是指向该对象的构造函数，所有函数（此时看成对象了）最终的构造函数都指向Function
+
+prototype is a property containing an object on which you define members that you want to be inherited.
+
+### Revisiting create()
+
+The `Object.create()` method creates a new object, using an existing object as the prototype of the newly created object.
+
+```js
+let person2 = Object.create(person1);
+person2.__proto__ === person1 //true
+```
+
+### The constructor property
+
+Every _constructor function_ has a prototype property whose value is an object containing a **constructor property**. This constructor property _points to the original constructor function_.
+
+A clever trick is that you can put parentheses onto the end of the constructor property (containing any required parameters) to create another object instance from that constructor.
+
+```js
+let person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+```
+
+`instanceof` _运算符_用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。
+
+```js
+//语法
+object instanceof constructor
+
+```
+
+### Modifying prototypes
+
+[myPen-oojs3](https://codepen.io/pen/?editors=0010)
+
+修改 constructor 的 prototype, 由这个 constructor 产生的所有 object 的 prototype 都会改变。
+
+The JavaScript **delete** operator _removes a property from an object_; if no more references to the same property are held, it is eventually released automatically.
+
+```js
+//语法
+delete expression
+```
+
+a fairly common pattern for more object definitions is to _define the properties inside the constructor, and the methods on the prototype_
+
+```js
+// Constructor with property definitions
+
+function Test(a, b, c, d) {
+  // property definitions
+}
+
+// First method definition
+
+Test.prototype.x = function() { ... };
+
+// Second method definition
+
+Test.prototype.y = function() { ... };
+
+// etc.
+```
