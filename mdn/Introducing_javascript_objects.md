@@ -58,7 +58,7 @@ person.farewell = function() { alert("Bye everybody!"); }
 
 ### You've been using objects all along
 
-#### document object model（DOM)
+#### document object model（DOM）
 
 For each webpage loaded, an instance of Document is created, called document, which represents the entire page's structure, content, and other features such as its URL.
 
@@ -143,7 +143,7 @@ let person1 = new Object({
 
 #### Using the `create()` method
 
-JavaScript has a built-in method called `create()` that allows you to _create object instances without first creating constructors_, especially if they are creating only a few instances of an object. 
+JavaScript has a built-in method called `create()` that allows you to _create object instances without first creating constructors_, especially if they are creating only a few instances of an object.
 
 With it, _you can create a new object, using an existing object as the prototype of the newly created object._
 
@@ -235,4 +235,156 @@ Test.prototype.x = function() { ... };
 Test.prototype.y = function() { ... };
 
 // etc.
+```
+
+## Inheritance in JavaScript
+
+[myPen-oojs-class-inheritance](https://codepen.io/cc2m2/pen/OJgWwzL?editors=0010)
+
+The `call()` _method_ calls a function with a given this value and arguments provided individually.
+
+```js
+function Product(name, price) {
+  this.name = name;
+  this.price = price;
+}
+
+function Food(name, price) {
+  Product.call(this, name, price);
+  this.category = 'food';
+}
+
+console.log(new Food('cheese', 5).name);
+// expected output: "cheese"
+```
+
+Note that if the constructor you are inheriting from _doesn't take its property values from parameters_, you don't need to specify them as additional arguments in `call()`.
+
+```js
+function Brick() {
+  this.width = 10;
+  this.height = 20;
+}
+
+function BlueGlassBrick() {
+  Brick.call(this);
+
+  this.opacity = 0.5;
+  this.color = 'blue';
+}
+```
+
+### Setting Teacher()'s prototype and constructor reference（继承）
+
+```js
+function Teacher(first, last, age, gender, interests, subject) {
+  Person.call(this, first, last, age, gender, interests); //! 继承 Property
+
+  this.subject = subject;
+}
+
+Teacher.prototype = Object.create(Person.prototype); //! 继承 methods
+Teacher.prototype.constructor = Teacher; //! 由于 Teacher.prototype 是从Person.prototype 继承的，如果没有这一行，Teacher.prototype.constructor 返回的是 Person
+
+Teacher.prototype.greeting = function() {
+  let prefix;
+
+  if(this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+    prefix = 'Mr.';
+  } else if(this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+    prefix = 'Mrs.';
+  } else {
+    prefix = 'Mx.';
+  }
+
+  alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+};
+
+let teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+```
+
+### ECMAScript 2015 Classes
+
+ECMAScript 2015 introduces class syntax to JavaScript as a way to write reusable classes using easier, cleaner syntax, which is more similar to classes in C++ or Java. （IE不支持）
+
+```js
+class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
+  greeting() {
+    console.log(`Hi! I'm ${this.name.first}`);
+  };
+
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+
+//We can now instantiate object instances using the new operator, in just the same way as we did before:
+let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+han.greeting();
+// Hi! I'm Han
+
+let leia = new Person('Leia', 'Organa', 19, 'female', ['Government']);
+leia.farewell();
+// Leia has left the building. Bye for now
+```
+
+#### Inheritance with class syntax
+
+To create a subclass we use the **extends** keyword to tell JavaScript the class we want to base our class on.
+
+The **super** keyword is used to access and call functions on an object's parent.
+
+```js
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+
+    // subject and grade are specific to Teacher
+    this.subject = subject;
+    this.grade = grade;
+  }
+}
+```
+
+### Getters and Setters
+
+Getters and setters work in pairs. A **getter** returns the current value of the variable and its corresponding **setter** changes the value of the variable to the one it defines.
+
+```js
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+    // subject and grade are specific to Teacher
+    this._subject = subject; // We use _ to create a separate value in which to store our name property. 
+    this.grade = grade;
+  }
+
+  get subject() {
+    return this._subject;
+  }
+
+  set subject(newSubject) {
+    this._subject = newSubject;
+  }
+}
+
+// Check the default value
+console.log(snape.subject) // Returns "Dark arts"(初始化的值)
+
+// Change the value
+snape.subject = "Balloon animals" // Sets _subject to "Balloon animals"
+
+// Check it again and see if it matches the new value
+console.log(snape.subject) // Returns "Balloon animals"
+
 ```
