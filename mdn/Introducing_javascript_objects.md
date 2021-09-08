@@ -426,7 +426,7 @@ console.log(snape.subject) // Returns "Balloon animals"
 
 ### Obtaining the JSON
 
-To obtain the JSON, we use an _API_ called `XMLHttpRequest` (often called **XHR**). This is a very useful JavaScript object that allows us to make network requests to retrieve resources from a server via JavaScript (e.g. images, text, JSON, even HTML snippets), meaning that we can update small sections of content without having to reload the entire page. 
+To obtain the JSON, we use an _API_ called `XMLHttpRequest` (often called **XHR**). This is a very useful JavaScript object that allows us to make network requests to retrieve resources from a server via JavaScript (e.g. images, text, JSON, even HTML snippets), meaning that we can update small sections of content without having to reload the entire page.
 
 [myPen-JSON](https://codepen.io/cc2m2/pen/wvegQmB?editors=0010)
 

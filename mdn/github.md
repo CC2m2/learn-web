@@ -9,7 +9,7 @@
 
 ## git commands
 
-![git-commands](https://raw.githubusercontent.com/CC2m2/learning-js-mdn/main/md/Assets/git-commands.png)
+![git-commands](./Assets/git-commands.png)
 
 ### basic
 
@@ -85,4 +85,4 @@ get the latest commits from the main and add our commits on top of it.
   - rebase到当前分支的下一个commit 继续处理conflict
 - git push -f
   - "-f" force
-  - rebase main分支后，github不知道我们的分支已经包含最新的main, 这时可以强制push
+  - rebase main分支后，github不知道我们的分支已经包含最新的main, 这时可以强制push.

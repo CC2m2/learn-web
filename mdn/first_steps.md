@@ -67,7 +67,7 @@ In this case both the script and the HTML will load simultaneously and the code 
 
 ### async and defer
 
-![async and defer](https://raw.githubusercontent.com/CC2m2/learning-js-mdn/main/md/Assets/async-defer.jpg)
+![async and defer](./Assets/async-defer.jpg)
 
 To summarize:
 
