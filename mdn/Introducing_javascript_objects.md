@@ -388,3 +388,96 @@ snape.subject = "Balloon animals" // Sets _subject to "Balloon animals"
 console.log(snape.subject) // Returns "Balloon animals"
 
 ```
+
+## Working with JSON
+
+### No, really, what is JSON?
+
+- a text-based data format
+- it can be used independently from JavaScript
+- JSON exists as a string with a specified data format — it contains only properties, no methods.
+- can be stored in its own file, a text file with an extension of .json
+- double quotes
+
+```JSON
+[
+  {
+    "name": "Molecule Man",
+    "age": 29,
+    "secretIdentity": "Dan Jukes",
+    "powers": [
+      "Radiation resistance",
+      "Turning tiny",
+      "Radiation blast"
+    ]
+  },
+  {
+    "name": "Madame Uppercut",
+    "age": 39,
+    "secretIdentity": "Jane Wilson",
+    "powers": [
+      "Million tonne punch",
+      "Damage resistance",
+      "Superhuman reflexes"
+    ]
+  }
+]
+```
+
+### Obtaining the JSON
+
+To obtain the JSON, we use an _API_ called `XMLHttpRequest` (often called **XHR**). This is a very useful JavaScript object that allows us to make network requests to retrieve resources from a server via JavaScript (e.g. images, text, JSON, even HTML snippets), meaning that we can update small sections of content without having to reload the entire page. 
+
+[myPen-JSON](https://codepen.io/cc2m2/pen/wvegQmB?editors=0010)
+
+```js
+let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json'; //获取json文件地址
+let request = new XMLHttpRequest(); //创建对象
+request.open('GET', requestURL); //至少两个参数，第一个参数可以改
+request.responseType = 'json'; //告诉XHR服务器会返回JSON
+request.send(); //send the request
+request.onload = function() { 
+  const superHeroes = request.response; //接收返回的JSON数据，相当于保存在superHeroes这个对象中
+  populateHeader(superHeroes); //通过js（对象）来调用数据
+}
+
+function populateHeader(obj) {
+  const myH1 = document.createElement('h1');
+  myH1.textContent = obj['squadName'];
+  header.appendChild(myH1);
+
+  const myPara = document.createElement('p');
+  myPara.textContent = 'Hometown: ' + obj['homeTown'] + ' // Formed: ' + obj['formed'];
+  header.appendChild(myPara);
+}
+```
+
+### Converting between objects and text
+
+sometimes we receive a _raw JSON string_, and we need to _convert it to an object_ ourselves. (JSON string -> object)
+
+And when we want to send a JavaScript object across the network, we need to convert it to JSON (a string) before sending. (object -> JSON string)
+
+- `parse()`: Accepts a JSON string as a parameter, and returns the corresponding JavaScript object. (JSON string -> object)
+
+```js
+request.open('GET', requestURL);
+request.responseType = 'text'; // now we're getting a string!
+request.send();
+
+request.onload = function() {
+  const superHeroesText = request.response; // get the string from the response
+  const superHeroes = JSON.parse(superHeroesText); // convert it to an object
+  populateHeader(superHeroes);
+  showHeroes(superHeroes);
+}
+```
+
+- `stringify()`: Accepts an object as a parameter, and returns the equivalent JSON string. (object -> JSON string)
+
+```js
+let myObj = { name: "Chris", age: 38 };
+myObj
+let myString = JSON.stringify(myObj);
+myString
+```
