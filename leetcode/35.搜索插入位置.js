@@ -21,7 +21,7 @@ function binarySearch(nums, target, low, high) {
     if (nums[mid] === target) return mid;
 
     if (target < nums[mid]) {
-      high = mid -1;
+      high = mid - 1;
     } else {
       low = mid + 1;
     }
@@ -30,4 +30,3 @@ function binarySearch(nums, target, low, high) {
   return low;
 }
 // @lc code=end
-
