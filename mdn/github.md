@@ -86,3 +86,11 @@ get the latest commits from the main and add our commits on top of it.
 - git push -f
   - "-f" force
   - rebase main分支后，github不知道我们的分支已经包含最新的main, 这时可以强制push.
+
+## 回到之前的某个版本
+
+- git reset --hard hash值
+  - 回到某个版本，这个版本之后的所有版本都清空
+  - 用git push -f 提交更改（远程比本地版本旧）
+- git revert -n hash值
+  - 回到某个版本重新做，保留这个版本之后的所有版本的内容，需要处理conflict
