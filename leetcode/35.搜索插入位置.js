@@ -10,7 +10,7 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
+var searchInsert = function (nums, target) {
   return binarySearch(nums, target, 0, nums.length - 1);
 };
 
