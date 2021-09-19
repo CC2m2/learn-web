@@ -1,5 +1,40 @@
 # Introducing JavaScript objects
 
+<!-- TOC -->
+
+- [Introducing JavaScript objects](#introducing-javascript-objects)
+  - [JavaScript object basics](#javascript-object-basics)
+    - [Object basics](#object-basics)
+    - [Bracket notation](#bracket-notation)
+    - [Setting object members](#setting-object-members)
+    - [You've been using objects all along](#youve-been-using-objects-all-along)
+      - [document object model（DOM）](#document-object-modeldom)
+  - [Object-oriented JavaScript for beginners](#object-oriented-javascript-for-beginners)
+    - [Object-oriented programming — the basics](#object-oriented-programming--the-basics)
+    - [Constructors and object instances](#constructors-and-object-instances)
+    - [Other ways to create object instances](#other-ways-to-create-object-instances)
+      - [The `Object()` constructor](#the-object-constructor)
+      - [Using the `create()` method](#using-the-create-method)
+  - [Object prototypes](#object-prototypes)
+    - [A prototype-based language?](#a-prototype-based-language)
+    - [Understanding prototype objects](#understanding-prototype-objects)
+      - [__proto__  prototype constructor](#proto--prototype-constructor)
+    - [Revisiting create()](#revisiting-create)
+    - [The constructor property](#the-constructor-property)
+    - [Modifying prototypes](#modifying-prototypes)
+  - [Inheritance in JavaScript](#inheritance-in-javascript)
+    - [Setting Teacher()'s prototype and constructor reference（继承）](#setting-teachers-prototype-and-constructor-reference继承)
+    - [ECMAScript 2015 Classes](#ecmascript-2015-classes)
+      - [Inheritance with class syntax](#inheritance-with-class-syntax)
+    - [Getters and Setters](#getters-and-setters)
+  - [Working with JSON](#working-with-json)
+    - [No, really, what is JSON?](#no-really-what-is-json)
+    - [Obtaining the JSON](#obtaining-the-json)
+    - [Converting between objects and text](#converting-between-objects-and-text)
+  - [bouncing ball](#bouncing-ball)
+
+<!-- /TOC -->
+
 ## JavaScript object basics
 
 ### Object basics
@@ -481,3 +516,7 @@ myObj
 let myString = JSON.stringify(myObj);
 myString
 ```
+
+## bouncing ball
+
+[myPen-bouncing_ball](https://codepen.io/cc2m2/pen/YzQavEr?editors=0011)
