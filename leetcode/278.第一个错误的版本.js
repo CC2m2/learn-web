@@ -33,12 +33,17 @@ var solution = function(isBadVersion) {
      * 说明这可能是第一个错误的也可能不是，
      * 不可排除，则执行right = mid；
      * 缩小右边边界但不要跳过这一个可能的错误点。
+     * 
+     * 不能用（left+right）/2形式，
+     * 当left和right都是int，两个值的初始值都超过int限定大小的一半，
+     * 那么left+right就会发生溢出，
+     * 所以应该用left+(right-left)/2来防止求中值时候的溢出。
     */
      return function(n) {
         // binary search
        var start = 1, end = n; //序号从1开始
        while(start < end){
-           var mid = Math.floor(start + (end-start) / 2);
+           var mid = Math.floor(start + (end-start) / 2); 
            if(isBadVersion(mid)){
                 end = mid; // look on left side of mid
            }else{
