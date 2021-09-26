@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="clock"></p>
+    <button class="start">start</button>
+    <button class="stop">stop</button>
+    <button class="reset">reset</button>
+
+    <script>
+      let totalSecond = 0; //总共经历的时间
+      let stopwatch; //标识符，用于控制计时器
+      const displayPara = document.querySelector('.clock');
+
+      function displayCount(){
+        //计算时分秒的值
+        let hours = Math.floor(totalSecond / 3600);
+        let minutes = Math.floor((totalSecond % 3600) / 60);
+        let seconds = Math.floor(totalSecond % 60);
+
+        //是否前导0
+        let displayHours = (hours < 10) ? '0' + hours : hours;
+        let displayMinutes = (minutes < 10) ? '0' + minutes : minutes;
+        let displaySeconds = (seconds < 10) ? '0' + seconds : seconds;
+
+        displayPara.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`;
+
+        totalSecond++; //总时间增加
+      }
+
+      const startBtn = document.querySelector('.start');
+      const stopBtn = document.querySelector('.stop');
+      const resetBtn = document.querySelector('.reset');
+
+      startBtn.addEventListener('click', () =>{
+        stopwatch = setInterval(displayCount, 1000);
+        startBtn.disabled = true;
+      });
+
+      stopBtn.addEventListener('click', () =>{
+        clearInterval(stopwatch);
+        startBtn.disabled = false;
+      });
+
+      resetBtn.addEventListener('click', () =>{
+        clearInterval(stopwatch);
+        startBtn.disabled = false;
+        totalSecond = 0;
+        displayCount();
+      });
+
+      displayCount(); //加载页面就加载计时器
+    </script>
+  </body>
+</html>
