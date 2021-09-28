@@ -33,6 +33,8 @@
     - 将当前仓库的全部文件添加到暂存区
 - git restore --staged < file>
   - 将暂存区的某一文件删除（不追踪某一文件）
+- git status
+  - 查看当前git状态
 
 ### commit
 
