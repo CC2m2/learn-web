@@ -212,7 +212,7 @@ setInterval(draw, 17);
 
 #### Including a timestamp
 
-The actual callback passed to the `requestAnimationFrame()` function can be given a parameter, too: a timestamp value, that _represents the time since the `requestAnimationFrame()` started running_. regardless of how fast or slow your device might be.
+The actual callback passed to the `requestAnimationFrame()` function can be given a parameter, too: a timestamp value(时间戳), that _represents the time since the `requestAnimationFrame()` started running_. regardless of how fast or slow your device might be.
 
 ```js
 let startTime = null;

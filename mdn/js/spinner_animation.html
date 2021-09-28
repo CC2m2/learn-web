@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+    <style>
+      html {
+        background-color: white;
+        height: 100%;
+      }
+
+      body {
+        height: inherit;
+        background-color: red;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      div {
+        display: inline-block;
+        font-size: 10rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div>↻</div>
+    <button class="stop">stop</button>
+    <button class="start">start</button>
+
+    <script>
+      const spinner = document.querySelector("div");
+      const stopBtn = document.querySelector(".stop");
+      const startBtn = document.querySelector(".start");
+
+      let rotateCount = 0; //to contain a reference to the requestAnimationFrame() call
+      let startTime = null; //to store the start time of the requestAnimationFrame()
+      let rAF;
+
+      function draw(timestamp) {
+        if (!startTime) {
+          startTime = timestamp;
+        }
+
+        rotateCount = (timestamp - startTime) / 3;
+        rotateCount %= 360;
+
+        spinner.style.transform = "rotate(" + rotateCount + "deg)";
+
+        stopBtn.addEventListener("click", () => {
+          cancelAnimationFrame(rAF);
+        });
+
+        rAF = requestAnimationFrame(draw);
+      }
+
+      draw();
+
+      startBtn.addEventListener('click', () =>{
+        draw();
+      });
+    </script>
+  </body>
+</html>
