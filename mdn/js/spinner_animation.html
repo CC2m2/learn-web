@@ -37,6 +37,7 @@
       let rotateCount = 0; //to contain a reference to the requestAnimationFrame() call
       let startTime = null; //to store the start time of the requestAnimationFrame()
       let rAF;
+      let spinning = false;
 
       function draw(timestamp) {
         if (!startTime) {
@@ -48,17 +49,17 @@
 
         spinner.style.transform = "rotate(" + rotateCount + "deg)";
 
-        stopBtn.addEventListener("click", () => {
-          cancelAnimationFrame(rAF);
-        });
-
         rAF = requestAnimationFrame(draw);
       }
 
-      draw();
-
-      startBtn.addEventListener('click', () =>{
-        draw();
+      document.body.addEventListener('click', () => {
+        if(spinning) {
+          cancelAnimationFrame(rAF);
+          spinning = false;
+        } else {
+          draw();
+          spinning = true;
+        }
       });
     </script>
   </body>
