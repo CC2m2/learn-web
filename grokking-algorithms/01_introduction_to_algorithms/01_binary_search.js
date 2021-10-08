@@ -19,6 +19,7 @@ function binary_search(list, item) {
   return null; //! 当找不到数据时，要有返回值
 }
 
+//test
 const my_list = [1, 3, 5, 7, 9];
 
 console.log(binary_search(my_list, 3));

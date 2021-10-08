@@ -231,3 +231,11 @@ function draw(timestamp) {
 
 draw();
 ```
+
+## Graceful asynchronous programming with Promises
+
+### What are promises?
+
+a Promise is an **object** that represents **an intermediate state** of an operation — in effect, a promise that a result of some kind will be returned at some point in the future.
+
+there is a guarantee that when the result is available, or the promise fails, _the code you provide will be executed in order to do something else with a successful result, or to gracefully handle a failure case_.
