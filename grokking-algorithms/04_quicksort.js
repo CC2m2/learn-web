@@ -9,12 +9,8 @@ function quicksort(array) {
 
   //递归条件
   let pivot = array[0]; //基准值:第一个元素
-  let less = array.slice(1).filter(function(el) { //小于基准值的子数组
-    return el <= pivot;
-  });
-  let greater = array.slice(1).filter(function(el) { //大于基准值的子数组
-    return el > pivot;
-  });
+  let less = array.slice(1).filter(item => item <= pivot); //小于基准值的子数组
+  let greater = array.slice(1).filter(item => item > pivot); //大于基准值的子数组
   
   return quicksort(less).concat(pivot, quicksort(greater));
 }

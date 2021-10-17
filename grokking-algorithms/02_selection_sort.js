@@ -15,13 +15,14 @@ function findSmallest(array) {
 
 //选择排序
 function selectionSort(array) {
+  let sortArray = [...array];
   let sortedArray = []; //存储排序后的数组
-  let length = array.length; //!!! for循环中不能直接用array.length作为边界值 -> array数组的内容一直在变化
+  let length = sortArray.length; //!!! for循环中不能直接用array.length作为边界值 -> array数组的内容一直在变化
 
   for (let i = 0; i < length; i++) {
-    let smallestIndex = findSmallest(array); //找出数组中最小元素的索引
-    sortedArray.push(array[smallestIndex]); //将最小的数push到新的数组中
-    array.splice(smallestIndex, 1); //更新下一轮排序的数组
+    let smallestIndex = findSmallest(sortArray); //找出数组中最小元素的索引
+    sortedArray.push(sortArray[smallestIndex]); //将最小的数push到新的数组中
+    sortArray.splice(smallestIndex, 1); //更新下一轮排序的数组
   }
 
   return sortedArray;
