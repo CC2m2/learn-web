@@ -5,8 +5,6 @@
  */
 
 // @lc code=start
-const nums = [-1,0,3,5,9,12];
-console.log(search(nums, 2));
 function search(nums: number[], target: number): number {
   let left = 0;
   let right = nums.length - 1;
